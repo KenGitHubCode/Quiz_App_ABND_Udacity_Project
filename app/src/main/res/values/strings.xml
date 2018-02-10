@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">QuizFinal</string>
+    <string name="welcomeHeader">Welcome to the xyz quiz!</string>
+</resources>
