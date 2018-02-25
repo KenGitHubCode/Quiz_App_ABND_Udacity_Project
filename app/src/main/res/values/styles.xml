@@ -1,24 +1,62 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+
     <!--Overacrching Linear View for Questions -->
     <style name="MyOverallTheme">
-        <item name="android:padding">16dp</item>
         <item name="android:orientation">vertical</item>
-
+        <item name="android:padding">16dp</item>
     </style>
+
     <!--Text Headings for Questions -->
     <style name="TitleTheme">
-        <item name="android:paddingBottom">16dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">32sp</item>
+    </style>
+
+    <!--Question Text Styles, all questions have same format-->
+    <style name="QuestionText">
+        <item name="android:layout_marginTop">24dp</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <!--Checkbox, editbox and radio button styles for answers-->
+
+    <style name="checkboxColumns">
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_weight">1</item>
+
+    </style>
+
+    <style name="CheckBoxes">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="editTextstyle">
+        <item name="android:hint">Answer</item>
+    </style>
+
+    <style name="radioStyle">
+        <!--placeholder in case needed-->
+    </style>
+
+    <!--Button / Submit button Style-->
+    <style name="myButtonStyle">
         <item name="android:textAllCaps">true</item>
     </style>
 
+    <!--Button / Submit button Style-->
+    <style name="myButtonShareStyle">
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">16sp</item>
+    </style>
 
 
 </resources>

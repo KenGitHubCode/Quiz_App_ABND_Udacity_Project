@@ -1,4 +1,4 @@
-<!--Scroll View to allow scrolling of long view-->
+<!--&lt;!&ndash;Scroll View to allow scrolling of long view&ndash;&gt;<!DOCTYPE ScrollView [<!ELEMENT ScrollView (LinearLayout)*><!ATTLIST ScrollViewxmlns:android CDATA #REQUIREDxmlns:tools CDATA #REQUIREDandroid:layout_width CDATA #REQUIREDandroid:layout_height CDATA #REQUIREDtools:context CDATA #REQUIRED><!ELEMENT LinearLayout (ImageView|TextView|LinearLayout|CheckBox|Button|EditText|RadioGroup)*><!ATTLIST LinearLayoutandroid:id CDATA #IMPLIEDandroid:layout_height CDATA #REQUIREDandroid:layout_width CDATA #REQUIREDandroid:orientation CDATA #IMPLIEDstyle CDATA #IMPLIED><!ELEMENT ImageView (#PCDATA)><!ATTLIST ImageViewandroid:layout_width CDATA #REQUIREDandroid:layout_height CDATA #REQUIREDandroid:src CDATA #REQUIRED><!ELEMENT TextView (#PCDATA)><!ATTLIST TextViewandroid:id CDATA #REQUIREDandroid:layout_height CDATA #REQUIREDandroid:layout_width CDATA #REQUIREDandroid:text CDATA #REQUIREDstyle CDATA #REQUIRED><!ELEMENT CheckBox (#PCDATA)><!ATTLIST CheckBoxandroid:id CDATA #REQUIREDandroid:layout_height CDATA #REQUIREDandroid:layout_width CDATA #REQUIREDandroid:text CDATA #REQUIREDstyle CDATA #REQUIRED><!ELEMENT Button (#PCDATA)><!ATTLIST Buttonandroid:id CDATA #REQUIREDandroid:layout_height CDATA #REQUIREDandroid:layout_width CDATA #REQUIREDandroid:onClick CDATA #REQUIREDandroid:text CDATA #REQUIREDstyle CDATA #REQUIRED><!ELEMENT EditText (#PCDATA)><!ATTLIST EditTextandroid:id CDATA #REQUIREDandroid:layout_height CDATA #REQUIREDandroid:layout_width CDATA #REQUIREDstyle CDATA #REQUIRED><!ELEMENT RadioGroup (RadioButton)*><!ATTLIST RadioGroupandroid:id CDATA #REQUIREDandroid:layout_height CDATA #REQUIREDandroid:layout_width CDATA #REQUIRED><!ELEMENT RadioButton (#PCDATA)><!ATTLIST RadioButtonandroid:id CDATA #REQUIREDandroid:layout_height CDATA #REQUIREDandroid:layout_width CDATA #REQUIREDandroid:text CDATA #REQUIREDstyle CDATA #REQUIRED>]>-->
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -295,6 +295,26 @@
             android:text="@string/submitAnswer"
             android:onClick="submitAnswer6" />
 
+
+
+        <!--Sharing ///////////////////////////////////-->
+        <TextView
+            android:id="@+id/shareScoreTextview"
+            style="@style/QuestionText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/shareText" />
+
+        <!--Submit Answers and Share Button-->
+        <Button
+            android:id="@+id/submitAnswersButtonsAndShare"
+            style="@style/myButtonShareStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/submitAnswersAndShare"
+            android:onClick="submitAnswersAndShare" />
 
     </LinearLayout>
 </ScrollView>

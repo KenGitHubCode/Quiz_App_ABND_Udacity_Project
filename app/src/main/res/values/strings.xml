@@ -1,4 +1,47 @@
 <resources>
-    <string name="app_name">QuizFinal</string>
-    <string name="welcomeHeader">Welcome to the xyz quiz!</string>
+    <!--Program Level-->
+    <string name="app_name">Above and Beyond Fan Quiz</string>
+    <string name="welcomeHeader">Fan Quiz</string>
+
+    <!--Checkbox view question Strings-->
+    <string name="Q1Text">Who are Above and Beyond? (select all that apply)</string>
+    <string name="q1aText">Jono Grant</string>
+    <string name="q1bText">Tony McGuinness</string>
+    <string name="q1cText">Paavo Siljamäki</string>
+    <string name="q1dText">Ken Muckey</string>
+
+    <string name="Q4Text">Who are also on their record label: Arjuna Beats? (select all that apply)</string>
+    <string name="q4aText">OceanLab</string>
+    <string name="q4bText">Yotto</string>
+    <string name="q4cText">Sunny Lax</string>
+    <string name="q4dText">DJ Khaled</string>
+
+    <!--EditView view question strings-->
+    <string name="Q2Text">\"Push the ______\"! </string>
+    <string name="Q2answer">BUTTON</string>
+    <string name="Q5Text">\"You are the Sun and ____ to me\"</string>
+    <string name="Q5answer">MOON</string>
+
+    <!--RadioGroup View question strings-->
+    <string name="Q3Text">Which is not a song by Above and Beyond?</string>
+    <string name="q3a">Sun and Moon</string>
+    <string name="q3b">i Shyne</string>
+    <string name="q3c">On a Good Day</string>
+    <string name="q3d">Blue Sky Action</string>
+
+    <!--RadioGroup View question strings-->
+    <string name="Q6Text">Which of these artists have not collaborated with Above and Beyond?</string>
+    <string name="q6a">Zoë Johnston</string>
+    <string name="q6b">Dillon Francis</string>
+    <string name="q6c">Justine Suissa</string>
+    <string name="q6d">Richard Bedford</string>
+
+    <!--Universal Button Text-->
+    <string name="submitAnswer">Submit Answer</string>
+    <string name="sharableText">I\'ve completed the Unofficial Above and Beyond Fan Quiz with a score of </string>
+
+    <string name="submitAnswersAndShare">Share your Score</string>
+    <string name="shareText">Push the button below to share your score </string>
+
+
 </resources>
