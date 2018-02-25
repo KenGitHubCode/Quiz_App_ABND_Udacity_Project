@@ -1,7 +1,13 @@
 package com.example.android.quizfinal;
 
+import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Base64;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +19,9 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public class MainActivity extends AppCompatActivity {
     //GLOBAL VARIABLE
@@ -27,19 +36,16 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-//        outState.putInt("scoreTeamA", scoreTeamA);
-//        outState.putInt("scoreTeamB", scoreTeamB);
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-//        scoreTeamA = savedInstanceState.getInt("scoreTeamA");
-//        scoreTeamB = savedInstanceState.getInt("scoreTeamB");
     }
 
     /**
      * Functions called by check answer buttons and calling answer check functions
+     *
      * @param view of the current View in the program
      * @returns all are void but use Toast to output messages to user
      */
@@ -56,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         EditText q2a = (EditText) findViewById(R.id.q2a);
         String answerForQ2 = getString(R.string.Q2answer);
         Button myButton = (Button) findViewById(R.id.submitAnswersButton2);
-        checkAnswersEditBoxes(q2a, answerForQ2,myButton);
+        checkAnswersEditBoxes(q2a, answerForQ2, myButton);
     }
 
     public void submitAnswer3(View view) {
@@ -81,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
         EditText q5a = (EditText) findViewById(R.id.q5a);
         String answerForQ5 = getString(R.string.Q5answer);
         Button myButton = (Button) findViewById(R.id.submitAnswersButton5);
-        checkAnswersEditBoxes(q5a, answerForQ5,myButton);
+        checkAnswersEditBoxes(q5a, answerForQ5, myButton);
     }
 
     public void submitAnswer6(View view) {
@@ -90,15 +96,18 @@ public class MainActivity extends AppCompatActivity {
         RadioButton answer = (RadioButton) findViewById(R.id.q6b);
         Button myButton = (Button) findViewById(R.id.submitAnswersButton6);
         checkAnswersRadio(selectedId, answer, myButton);
+
     }
+
 
     /**
      * Check for answers for a question, then checks if correct and output correctness message and if correct, adds to score
-     * @param  answer1, answer2,  answer3, answer4 are all checkboxes from the question
+     *
+     * @param answer1, answer2,  answer3, answer4 are all checkboxes from the question
      *                 myButton is the button from the question to disable when the answer is correct
      * @returns none; Toast outputs on screen
      */
-    private void checkAnswersCheckboxes(CheckBox answer1,CheckBox answer2, CheckBox answer3,CheckBox answer4,Button myButton) {
+    private void checkAnswersCheckboxes(CheckBox answer1, CheckBox answer2, CheckBox answer3, CheckBox answer4, Button myButton) {
 
         if (!answer1.isChecked() && !answer2.isChecked() && !answer3.isChecked() && !answer4.isChecked()) {
             Toast.makeText(getBaseContext(), "Please Select an Answer",
@@ -114,17 +123,19 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
     /**
      * Check for answers for a question, then checks if correct and output correctness message and if correct, adds to score
+     *
      * @param userAnswer which is the input and key, which is the answer stored in Strings.xml
-     *                 myButton is the button from the question to disable when the answer is correct
+     *                   myButton is the button from the question to disable when the answer is correct
      * @returns none; Toast outputs on screen
      */
-    private void checkAnswersEditBoxes(EditText userAnswer, String key,Button myButton) {
+    private void checkAnswersEditBoxes(EditText userAnswer, String key, Button myButton) {
 
         String userAnswerString = userAnswer.getText().toString().toUpperCase().trim();
 
-        if (userAnswerString=="") {
+        if (userAnswerString == "") {
             Toast.makeText(getBaseContext(), "Please Select an Answer",
                     Toast.LENGTH_LONG).show();
         } else if (userAnswerString.equals(key)) {
@@ -139,21 +150,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
     /**
      * Check for answers for a question, then checks if correct and output correctness message and if correct, adds to score
      *
      * @param selectedId as the user input, the answer key, and...
-     *                 myButton is the button from the question to disable when the answer is correct
+     *                   myButton is the button from the question to disable when the answer is correct
      * @returns none; Toast outputs on screen
      */
-    private void checkAnswersRadio(int selectedId,RadioButton answer, Button myButton) {
+    private void checkAnswersRadio(int selectedId, RadioButton answer, Button myButton) {
 
-
-        if (selectedId==-1) {
+        if (selectedId == -1) {
             Toast.makeText(getBaseContext(), "Please Select an Answer",
                     Toast.LENGTH_LONG).show();
-        } else if (selectedId==answer.getId()) {
+        } else if (selectedId == answer.getId()) {
             Toast.makeText(getBaseContext(), "Correct!",
                     Toast.LENGTH_LONG).show();
             numberOfCorrectAnswers++;
@@ -164,4 +173,35 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Composes an email based on the scores earned
+     *
+     * @param   subject, body
+     * @returns none; email composed
+     */
+    public void composeEmail(String subject, String body) {
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setData(Uri.parse("mailto:"));
+        intent.setType("*/*");
+        //intent.putExtra(Intent.EXTRA_EMAIL, addresses);
+        intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+        intent.putExtra(Intent.EXTRA_TEXT, body);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
+    }
+
+    /**
+     * Composes an email based on the email provided
+     *
+     * @param view
+     * @returns none; email composed
+     */
+    public void submitAnswersAndShare(View view) {
+        String mySubject = "My A&B Fan Quiz Score: " + numberOfCorrectAnswers + "/6";
+
+        composeEmail(mySubject, "I've scored "
+                + numberOfCorrectAnswers
+                + " out of 6 on the Above and Beyond Fan Quiz!");
+    }
 }
