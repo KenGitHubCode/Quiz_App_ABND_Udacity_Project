@@ -12,6 +12,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -27,76 +28,121 @@ public class MainActivity extends AppCompatActivity {
     //GLOBAL VARIABLE
     int numberOfCorrectAnswers = 0;
 
+    //Questions and Answers Views Initialized as Global (and then assinged in onCreate)
+    CheckBox q1answer1;
+    CheckBox q1answer2;
+    CheckBox q1answer3;
+    CheckBox q1answer4;
+    Button q1myButton;
+    //Question 2
+    EditText q2a;
+    String answerForQ2;
+    Button q2myButton;
+    //Question 3
+    RadioGroup question3Group;
+    int q3selectedId;
+    RadioButton q3answer;
+    Button q3myButton;
+    //Question 4
+    CheckBox q4answer1;
+    CheckBox q4answer2;
+    CheckBox q4answer3;
+    CheckBox q4answer4;
+    Button q4myButton;
+    //Question 5
+    EditText q5a;
+    String answerForQ5;
+    Button q5myButton;
+    //Question 6
+    RadioGroup question6Group;
+    int q6selectedId;
+    RadioButton q6answer;
+    Button q6myButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        //ensure user keyboard enables only when editbox is tapped
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //initialize views
+        //Question 1
+        q1answer1 = (CheckBox) findViewById(R.id.q1a);
+        q1answer2 = (CheckBox) findViewById(R.id.q1b);
+        q1answer3 = (CheckBox) findViewById(R.id.q1c);
+        q1answer4 = (CheckBox) findViewById(R.id.q1d);
+        q1myButton = (Button) findViewById(R.id.submitAnswersButton1);
+        //Question 2
+        q2a = (EditText) findViewById(R.id.q2a);
+        answerForQ2 = getString(R.string.Q2answer);
+        q2myButton = (Button) findViewById(R.id.submitAnswersButton2);
+        //Question 3
+         question3Group = (RadioGroup) findViewById(R.id.q3group);
+
+         q3answer = (RadioButton) findViewById(R.id.q3b);
+         q3myButton = (Button) findViewById(R.id.submitAnswersButton3);
+        //Question 4
+         q4answer1 = (CheckBox) findViewById(R.id.q4a);
+         q4answer2 = (CheckBox) findViewById(R.id.q4b);
+         q4answer3 = (CheckBox) findViewById(R.id.q4c);
+         q4answer4 = (CheckBox) findViewById(R.id.q4d);
+         q4myButton = (Button) findViewById(R.id.submitAnswersButton4);
+        //Question 5
+         q5a = (EditText) findViewById(R.id.q5a);
+         answerForQ5 = getString(R.string.Q5answer);
+         q5myButton = (Button) findViewById(R.id.submitAnswersButton5);
+        //Question 6
+         question6Group = (RadioGroup) findViewById(R.id.q6group);
+
+         q6answer = (RadioButton) findViewById(R.id.q6b);
+         q6myButton = (Button) findViewById(R.id.submitAnswersButton6);
+
     }
 
+    //Saving Android State for numberOfCorrectAnswers when screen is rotated
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
+        outState.putInt("numberOfCorrectAnswers", numberOfCorrectAnswers);
     }
-
+    //Saving Android State for numberOfCorrectAnswers when screen is rotated
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
+        numberOfCorrectAnswers = savedInstanceState.getInt("numberOfCorrectAnswers");
     }
 
     /**
-     * Functions called by check answer buttons and calling answer check functions
-     *
+     * Functions called by check answer buttons and calling universal answer check functions while passing the question specific global views
      * @param view of the current View in the program
-     * @returns all are void but use Toast to output messages to user
      */
     public void submitAnswer1(View view) {
-        CheckBox answer1 = (CheckBox) findViewById(R.id.q1a);
-        CheckBox answer2 = (CheckBox) findViewById(R.id.q1b);
-        CheckBox answer3 = (CheckBox) findViewById(R.id.q1c);
-        CheckBox answer4 = (CheckBox) findViewById(R.id.q1d);
-        Button myButton = (Button) findViewById(R.id.submitAnswersButton1);
-        checkAnswersCheckboxes(answer1, answer2, answer3, answer4, myButton);
+        checkAnswersCheckboxes(q1answer1, q1answer2, q1answer3, q1answer4, q1myButton);
     }
 
     public void submitAnswer2(View view) {
-        EditText q2a = (EditText) findViewById(R.id.q2a);
-        String answerForQ2 = getString(R.string.Q2answer);
-        Button myButton = (Button) findViewById(R.id.submitAnswersButton2);
-        checkAnswersEditBoxes(q2a, answerForQ2, myButton);
+        checkAnswersEditBoxes(q2a, answerForQ2, q2myButton);
     }
 
     public void submitAnswer3(View view) {
-        RadioGroup question3Group = (RadioGroup) findViewById(R.id.q3group);
-        int selectedId = question3Group.getCheckedRadioButtonId();
-        RadioButton answer = (RadioButton) findViewById(R.id.q3b);
-        Button myButton = (Button) findViewById(R.id.submitAnswersButton3);
-        checkAnswersRadio(selectedId, answer, myButton);
+        q3selectedId = question3Group.getCheckedRadioButtonId();
+        checkAnswersRadio(q3selectedId, q3answer, q3myButton);
     }
 
     public void submitAnswer4(View view) {
-        CheckBox answer1 = (CheckBox) findViewById(R.id.q4a);
-        CheckBox answer2 = (CheckBox) findViewById(R.id.q4b);
-        CheckBox answer3 = (CheckBox) findViewById(R.id.q4c);
-        CheckBox answer4 = (CheckBox) findViewById(R.id.q4d);
-        Button myButton = (Button) findViewById(R.id.submitAnswersButton4);
-
-        checkAnswersCheckboxes(answer1, answer2, answer3, answer4, myButton);
+         checkAnswersCheckboxes(q4answer1, q4answer2, q4answer3, q4answer4, q4myButton);
     }
 
     public void submitAnswer5(View view) {
-        EditText q5a = (EditText) findViewById(R.id.q5a);
-        String answerForQ5 = getString(R.string.Q5answer);
-        Button myButton = (Button) findViewById(R.id.submitAnswersButton5);
-        checkAnswersEditBoxes(q5a, answerForQ5, myButton);
+        checkAnswersEditBoxes(q5a, answerForQ5, q5myButton);
     }
 
     public void submitAnswer6(View view) {
-        RadioGroup question6Group = (RadioGroup) findViewById(R.id.q6group);
-        int selectedId = question6Group.getCheckedRadioButtonId();
-        RadioButton answer = (RadioButton) findViewById(R.id.q6b);
-        Button myButton = (Button) findViewById(R.id.submitAnswersButton6);
-        checkAnswersRadio(selectedId, answer, myButton);
-
+        q6selectedId = question6Group.getCheckedRadioButtonId();
+        checkAnswersRadio(q6selectedId, q6answer, q6myButton);
     }
 
 

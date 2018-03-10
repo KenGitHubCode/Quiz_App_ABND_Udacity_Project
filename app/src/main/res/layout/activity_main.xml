@@ -10,7 +10,8 @@
         android:id="@+id/overallLinearLayout"
         style="@style/MyOverallTheme"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="?android:attr/windowBackground">
 
         <!--Title of the Program-->
         <ImageView
@@ -41,7 +42,8 @@
             <LinearLayout
                 style="@style/checkboxColumns"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="#303030">
 
                 <CheckBox
                     android:id="@+id/q1a"
@@ -84,8 +86,8 @@
             style="@style/myButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/submitAnswer"
-            android:onClick="submitAnswer1" />
+            android:onClick="submitAnswer1"
+            android:text="@string/submitAnswer" />
 
         <!--QUESTION 2-->
         <TextView
@@ -106,8 +108,8 @@
             style="@style/myButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/submitAnswer"
-            android:onClick="submitAnswer2" />
+            android:onClick="submitAnswer2"
+            android:text="@string/submitAnswer" />
 
 
         <!--QUESTION 3-->
@@ -157,8 +159,8 @@
             style="@style/myButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/submitAnswer"
-            android:onClick="submitAnswer3" />
+            android:onClick="submitAnswer3"
+            android:text="@string/submitAnswer" />
 
         <!--QUESTION 4 //////////////////////////////////////////-->
         <TextView
@@ -219,8 +221,8 @@
             style="@style/myButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/submitAnswer"
-            android:onClick="submitAnswer4" />
+            android:onClick="submitAnswer4"
+            android:text="@string/submitAnswer" />
 
         <!--QUESTION 5-->
         <TextView
@@ -241,8 +243,8 @@
             style="@style/myButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/submitAnswer"
-            android:onClick="submitAnswer5" />
+            android:onClick="submitAnswer5"
+            android:text="@string/submitAnswer" />
 
 
         <!--QUESTION 6 ///////////////////////////////////-->
@@ -292,9 +294,8 @@
             style="@style/myButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/submitAnswer"
-            android:onClick="submitAnswer6" />
-
+            android:onClick="submitAnswer6"
+            android:text="@string/submitAnswer" />
 
 
         <!--Sharing ///////////////////////////////////-->
@@ -313,8 +314,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/submitAnswersAndShare"
-            android:onClick="submitAnswersAndShare" />
+            android:onClick="submitAnswersAndShare"
+            android:text="@string/submitAnswersAndShare" />
 
     </LinearLayout>
 </ScrollView>
