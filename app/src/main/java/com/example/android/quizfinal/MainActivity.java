@@ -70,35 +70,35 @@ public class MainActivity extends AppCompatActivity {
 
         //initialize views
         //Question 1
-        q1answer1 = (CheckBox) findViewById(R.id.q1a);
-        q1answer2 = (CheckBox) findViewById(R.id.q1b);
-        q1answer3 = (CheckBox) findViewById(R.id.q1c);
-        q1answer4 = (CheckBox) findViewById(R.id.q1d);
-        q1myButton = (Button) findViewById(R.id.submitAnswersButton1);
+        q1answer1 = findViewById(R.id.q1a);
+        q1answer2 = findViewById(R.id.q1b);
+        q1answer3 = findViewById(R.id.q1c);
+        q1answer4 = findViewById(R.id.q1d);
+        q1myButton = findViewById(R.id.submitAnswersButton1);
         //Question 2
-        q2a = (EditText) findViewById(R.id.q2a);
+        q2a = findViewById(R.id.q2a);
         answerForQ2 = getString(R.string.Q2answer);
-        q2myButton = (Button) findViewById(R.id.submitAnswersButton2);
+        q2myButton = findViewById(R.id.submitAnswersButton2);
         //Question 3
-         question3Group = (RadioGroup) findViewById(R.id.q3group);
+         question3Group = findViewById(R.id.q3group);
 
-         q3answer = (RadioButton) findViewById(R.id.q3b);
-         q3myButton = (Button) findViewById(R.id.submitAnswersButton3);
+         q3answer = findViewById(R.id.q3b);
+         q3myButton = findViewById(R.id.submitAnswersButton3);
         //Question 4
-         q4answer1 = (CheckBox) findViewById(R.id.q4a);
-         q4answer2 = (CheckBox) findViewById(R.id.q4b);
-         q4answer3 = (CheckBox) findViewById(R.id.q4c);
-         q4answer4 = (CheckBox) findViewById(R.id.q4d);
-         q4myButton = (Button) findViewById(R.id.submitAnswersButton4);
+         q4answer1 = findViewById(R.id.q4a);
+         q4answer2 = findViewById(R.id.q4b);
+         q4answer3 = findViewById(R.id.q4c);
+         q4answer4 = findViewById(R.id.q4d);
+         q4myButton = findViewById(R.id.submitAnswersButton4);
         //Question 5
-         q5a = (EditText) findViewById(R.id.q5a);
+         q5a = findViewById(R.id.q5a);
          answerForQ5 = getString(R.string.Q5answer);
-         q5myButton = (Button) findViewById(R.id.submitAnswersButton5);
+         q5myButton = findViewById(R.id.submitAnswersButton5);
         //Question 6
-         question6Group = (RadioGroup) findViewById(R.id.q6group);
+         question6Group = findViewById(R.id.q6group);
 
-         q6answer = (RadioButton) findViewById(R.id.q6b);
-         q6myButton = (Button) findViewById(R.id.submitAnswersButton6);
+         q6answer = findViewById(R.id.q6b);
+         q6myButton = findViewById(R.id.submitAnswersButton6);
 
     }
 
@@ -249,5 +249,11 @@ public class MainActivity extends AppCompatActivity {
         composeEmail(mySubject, "I've scored "
                 + numberOfCorrectAnswers
                 + " out of 6 on the Above and Beyond Fan Quiz!");
+    }
+
+    public void submitAnswersAndDisplay(View view) {
+        String mySubject = "My A&B Fan Quiz Score: " + numberOfCorrectAnswers + "/6";
+        Toast.makeText(getBaseContext(), mySubject,
+                Toast.LENGTH_LONG).show();
     }
 }

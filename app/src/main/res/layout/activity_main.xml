@@ -298,6 +298,16 @@
             android:text="@string/submitAnswer" />
 
 
+        <!--what's my score -->
+        <Button
+            android:id="@+id/submitAnswersButtonFinal"
+            style="@style/myButtonShareStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:onClick="submitAnswersAndDisplay"
+            android:text="@string/whatsmyscore" />
+
         <!--Sharing ///////////////////////////////////-->
         <TextView
             android:id="@+id/shareScoreTextview"

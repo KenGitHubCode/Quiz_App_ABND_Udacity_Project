@@ -42,6 +42,7 @@
 
     <string name="submitAnswersAndShare">Share your Score</string>
     <string name="shareText">Push the button below to share your score </string>
+    <string name="whatsmyscore">What\'s My Score?</string>
 
 
 </resources>
